@@ -32,7 +32,7 @@ class AuctionController
      * @throws Exception
      */
     #[Route('/auction/demo', name: 'index', methods: ['GET'])]
-    public function runSealedBidAuction(Request $request): Response
+    public function runSealedBidAuction(): Response
     {
         try {
             $reservedPrice = 100;
@@ -60,10 +60,10 @@ class AuctionController
             $result = $this->auctionService->runAuction($reservedPrice, $bids);
 
             if ($result['winnerName']) {
-                return new Response(sprintf("The buyer %s wins the auction at the price of %f euros.", $result['winnerName'], $result['winningPrice']));
+                return new Response(sprintf("The buyer %s wins the auction at the price of %d euros.", $result['winnerName'], $result['winningPrice']));
             }
 
-            return new Response(sprintf("There were no bids above %f euros, so no one won the auction", $reservedPrice));
+            return new Response(sprintf("There were no bids above %d euros, so no one won the auction", $reservedPrice));
         } catch (Exception $e) {
             $this->logger->error("[API] Run SealedBidAuction error: {$e->getMessage()}");
             return new Response("Something went wrong");
