@@ -25,7 +25,28 @@ class Auction implements AuctionInterface
      */
     public function findWinner(): ?Bid
     {
-        return null;
+        //Filter bids with an amount >= reservedPrice
+        $filteredValidBids = array_filter(
+            $this->bids,
+            function (Bid $bid) {
+                return $bid->getAmount() >= $this->reservePrice;
+            });
+
+        //No one bid enough amount
+        if (empty($filteredValidBids)) {
+            return null;
+        }
+
+
+        //Sort the bids by the amount, desc
+        usort(
+            $filteredValidBids,
+            function (Bid $a, Bid $b) {
+                return $b->getAmount() > $a->getAmount();
+            });
+
+        //First element of the array will be the bigger amount
+        return reset($filteredValidBids);
     }
 
     /**
