@@ -1,3 +1,5 @@
+.idea
+.env
 # Cache and logs (Symfony2)
 /app/cache/*
 /app/logs/*
@@ -16,6 +18,7 @@
 !var/sessions/.gitkeep
 
 # Logs (Symfony4)
+/var/
 /var/log/*
 !var/log/.gitkeep
 
