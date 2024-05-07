@@ -57,4 +57,28 @@ class AuctionServiceTest extends TestCase
         //Float '130.0' vs '130' (notSAME)
         $this->assertEquals(130, $result['winningPrice']);
     }
+
+    /**
+     * @throws Exception
+     */
+    public function testRunAuctionNoWinner(): void
+    {
+        //Sample data
+        $reservePrice = 100;
+
+        $buyerA = new Buyer(1, 'A');
+        $buyerB = new Buyer(2, 'B');
+
+
+        $bids = [
+            new Bid($buyerA, 90),
+            new Bid($buyerA, 99.5),
+            new Bid($buyerB, 0),
+        ];
+
+        $result = $this->auctionService->runAuction($reservePrice, $bids);
+
+        $this->assertNull($result['winnerName']);
+        $this->assertEquals(100, $result['winningPrice']);
+    }
 }

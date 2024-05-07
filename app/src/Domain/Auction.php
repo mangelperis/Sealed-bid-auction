@@ -47,7 +47,9 @@ class Auction implements AuctionInterface
     public function findWinningPrice(?Bid $winningBid): float
     {
         //Remove the winner Buyer's bids from the array
-        $this->removeBuyerBids($winningBid->getBuyer());
+        if(null !== $winningBid){
+            $this->removeBuyerBids($winningBid->getBuyer());
+        }
 
         //Filter bids with an amount >= reservedPrice
         $filteredValidBids = $this->getValidBids();
