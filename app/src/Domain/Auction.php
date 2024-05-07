@@ -76,7 +76,7 @@ class Auction implements AuctionInterface
         usort(
             $bids,
             function (Bid $a, Bid $b) {
-                return $b->getAmount() > $a->getAmount();
+                return $b->getAmount() - $a->getAmount();
             });
     }
 

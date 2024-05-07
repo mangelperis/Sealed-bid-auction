@@ -13,6 +13,7 @@ class AuctionServiceTest extends TestCase
 {
 
     private LoggerInterface $logger;
+    private AuctionService $auctionService;
 
     public function setUp(): void
     {
