@@ -53,6 +53,7 @@ class AuctionServiceTest extends TestCase
 
         //Expected result
         $this->assertSame('E', $result['winnerName']);
-        $this->assertSame(130, $result['winningPrice']);
+        //Float '130.0' vs '130' (notSAME)
+        $this->assertEquals(130, $result['winningPrice']);
     }
 }
