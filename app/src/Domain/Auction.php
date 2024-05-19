@@ -69,6 +69,11 @@ class Auction implements AuctionInterface
         return round($winningPriceBid->getAmount(), 1);
     }
 
+
+    //the subtraction $b->getAmount() - $a->getAmount() will automatically
+    // return a positive integer if $b is greater than $a,
+    // a negative integer if $b is less than $a,
+    // and zero if they are equal.
     /**
      * @param array $bids
      * @return void
