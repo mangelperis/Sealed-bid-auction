@@ -24,8 +24,19 @@
               pathCoverage="true"
               ignoreDeprecatedCodeUnits="false"
               disableCodeCoverageIgnore="false">
+
+
     </coverage>
 
+    <source>
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+<!--        <exclude>
+            <directory suffix=".php">src/generated</directory>
+            <file>src/autoload.php</file>
+        </exclude>-->
+    </source>
 
     <extensions>
     </extensions>
